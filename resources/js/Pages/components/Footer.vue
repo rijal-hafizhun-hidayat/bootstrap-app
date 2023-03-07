@@ -1,9 +1,22 @@
 <template>
-  <div class="bg-light">
+  <div class="">
     <div class="container">
-      <footer class="py-3 mt-5 fixed-bottom">
-        <p class="text-center text-muted">© 2022 Company, Inc</p>
+      <footer class="py-3">
+        <p class="text-center text-muted">© {{ year }} DKM Masjid Keramat Megu Cirebon</p>
       </footer>
     </div>
   </div>
 </template>
+<script>
+import { ref } from 'vue'
+export default {
+  setup() {
+    const year = ref(new Date().getFullYear())
+    console.log(year)
+
+    return {
+      year
+    }
+  },
+}
+</script>

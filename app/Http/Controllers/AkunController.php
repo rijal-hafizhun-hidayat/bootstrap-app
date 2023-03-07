@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\AkunModel;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 
 class AkunController extends Controller
@@ -26,11 +27,14 @@ class AkunController extends Controller
     }
 
     public function store(Request $request){
-       $request->validate([
+       $credential = $request->validate([
             'name'      => 'required|string',
             'username'  => 'required|string',
             'role'      => 'required|integer',
             'password'  => 'required|string'
        ]);
+
+       $credential['password'] = Hash::make($request->password);
+       AkunModel::create();
     }
 }

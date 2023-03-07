@@ -31,7 +31,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="password" class="form-label">Password</label>
-                                    <input type="text" v-model="form.password" :class="{ 'is-invalid': form.errors.password }" class="form-control" id="password" required>
+                                    <input type="password" v-model="form.password" :class="{ 'is-invalid': form.errors.password }" class="form-control" id="password" required>
                                     <div v-if="form.errors.password" class="invalid-feedback">{{ form.errors.password }}</div>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Submit</button>
@@ -42,13 +42,15 @@
             </div>
         </div>
     </main>
+    <Footer />
 </template>
 <script>
 import { ref } from 'vue'
 import { useForm } from '@inertiajs/vue3'
 import NavBar from '../components/NavBar.vue'
+import Footer from '../components/Footer.vue'
 export default {
-    components: { NavBar },
+    components: { NavBar, Footer },
     setup() {
         const form = useForm({
             name: '',

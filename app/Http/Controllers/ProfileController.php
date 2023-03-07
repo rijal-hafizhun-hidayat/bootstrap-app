@@ -10,9 +10,8 @@ use Illuminate\Support\Facades\Auth;
 class ProfileController extends Controller
 {
     public function index(){
-        $data = Auth::user();
         return Inertia::render('Profile/Index', [
-            'profile' => $data
+            'profile' => Auth::user()
         ]);
     }
 }

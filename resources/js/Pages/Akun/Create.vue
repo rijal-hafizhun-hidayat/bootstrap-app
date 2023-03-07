@@ -12,7 +12,6 @@
                                     <p>{{ form.errors }}</p>
                                     <label for="name" class="form-label">Nama</label>
                                     <input type="text" v-model="form.name" class="form-control" id="name">
-                                    <!-- <div v-if="form.errors.title" class="mt-2 alert alert-danger">{{ form.errors.title }}</div> -->
                                 </div>
                                 <div class="mb-3">
                                     <label for="username" class="form-label">Username</label>

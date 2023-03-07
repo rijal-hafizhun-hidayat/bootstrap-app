@@ -1,7 +1,7 @@
 <template>
     <Head title="Profile" />
     <NavBar />
-    <ChangeUsername />
+    <ChangeUsername :username="profile.username"/>
     <ChangePassword />
     <FooterProfile />
     
@@ -18,8 +18,11 @@ import { usePage } from '@inertiajs/vue3'
 
 export default {
     components: { NavBar, FooterProfile, ChangeUsername, Head, ChangePassword },
-    setup() {
-       
+    props: {
+        profile: Object
+    },
+    setup(props) {
+       console.log(props.profile)
     },
 }
 </script>

@@ -9,7 +9,7 @@
                             <form class="mt-3">
                                 <div class="mb-3">
                                     <label for="oldUsername" class="form-label">Username</label>
-                                    <input type="text" class="form-control" id="oldUsername">
+                                    <input type="text" v-model="form.username" class="form-control" id="oldUsername">
                                 </div>
                                 <div class="mb-3">
                                     <label for="newUsername" class="form-label">Username Baru</label>
@@ -26,10 +26,21 @@
 </template>
 
 <script>
+import { useForm } from '@inertiajs/vue3'
 export default {
-    setup() {
-        
+    props: {
+        username: String
     },
+    setup(props){
+        const form = useForm({
+            username: props.username,
+            newUsername: ''
+        })
+
+        return {
+            form
+        }
+    }
 }
 </script>
 

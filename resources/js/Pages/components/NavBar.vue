@@ -50,18 +50,8 @@ import { usePage } from '@inertiajs/vue3'
 
 export default {
     components: { Link },
-    props: {
-        isActive: Boolean,
-        name: String,
-        role: Number
-    },
-    setup(props) {
+    setup() {
         const user = computed(() => usePage().props.user)
-        //console.log(user)
-        // const user = computed(() => usePage().props.auth.user);
-        // console.log(props.isActive)
-        // console.log(props.name)
-        // console.log(props.role)
         return {
             user
         }    

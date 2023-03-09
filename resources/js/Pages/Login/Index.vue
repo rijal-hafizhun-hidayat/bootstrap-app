@@ -3,17 +3,12 @@
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <!-- <div v-if="$page.props.errors.failed" class="alert alert-danger alert-dismissible fade show" role="alert">
-                        Username atau Password <strong>Salah</strong>
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div> -->
                 <div v-if="$page.props.flash.message" class="alert alert-danger" role="alert">
                     {{ $page.props.flash.message }}
                 </div>
 
                 <div class="card">
                     <div class="card-header">Login</div>
-                    <!-- <p>{{ $page.props.errors.failed }}</p> -->
                     <div class="card-body">
                         <form @submit.prevent="login()">
                             <div class="row mb-3">

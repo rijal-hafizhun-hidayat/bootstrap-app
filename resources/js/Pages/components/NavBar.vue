@@ -20,17 +20,11 @@
                         <Link href="/akun" class="nav-link">Akun</Link>
                     </li>
                 </ul>
-                <!-- <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form> -->
                 <div id="user" class="d-flex dropdown">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{ user.name }}</a>
                             <ul class="dropdown-menu">
-                                <!-- <li><a class="dropdown-item" href="#">Profile</a></li>
-                                <li><a class="dropdown-item" href="#">Log Out</a></li> -->
                                 <li><Link class="dropdown-item" href="/profile">Profile</Link></li>
                                 <li>
                                     <Link class="dropdown-item" href="/logout" method="post" as="button">Logout</Link>

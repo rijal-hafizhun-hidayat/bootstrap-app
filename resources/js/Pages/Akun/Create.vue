@@ -9,8 +9,6 @@
                         <div class="card-body">
                             <form @submit.prevent="form.post('/akun')" class="mt-3">
                                 <div class="mb-3">
-                                    <!-- <p>{{ form.errors.name }}</p> -->
-                                    <!-- <p>{{ isInvalid }}</p> -->
                                     <label for="name" class="form-label">Nama</label>
                                     <input type="text" v-model="form.name" :class="{ 'is-invalid': form.errors.name }" class="form-control" id="name" required>
                                     <div v-if="form.errors.name" class="invalid-feedback">{{ form.errors.name }}</div>

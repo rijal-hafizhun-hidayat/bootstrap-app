@@ -35,6 +35,13 @@ class AkunController extends Controller
        ]);
 
        $credential['password'] = Hash::make($request->password);
-       AkunModel::create();
+
+       AkunModel::create($credential);
+
+       return redirect()->route('akun')->with('message', 'tambah akun berhasil');
+    }
+
+    public function destroy($id){
+        dd($id);
     }
 }

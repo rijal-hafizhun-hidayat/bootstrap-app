@@ -31,6 +31,7 @@ Route::middleware(['isLogin'])->group(function () {
     Route::get('/akun/create', [App\Http\Controllers\AkunController::class, 'create'])->name('akun.create');
     Route::get('/akun/edit', [App\Http\Controllers\AkunController::class, 'edit'])->name('akun.edit');
     Route::post('/akun', [App\Http\Controllers\AkunController::class, 'store'])->name('akun.store');
+    Route::delete('/akun/{id}', [App\Http\Controllers\AkunController::class, 'destroy'])->name('akun.destroy');
 
     //profile
     Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');

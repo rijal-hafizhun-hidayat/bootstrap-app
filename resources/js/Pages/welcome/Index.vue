@@ -6,16 +6,16 @@
 				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 			</div>
 			<p class="text-center">selamat datang di sistem informasi pembayaran zakat, infaq dan shodaqoh</p>
+			<Link href="/login" as="button" type="button">Login</Link>
 		</div>
 	</div>
 </template>
 <script>
-	export default {
-		setup(){
-
-			return {
-				
-			}
-		}
-	}
+import { Link } from '@inertiajs/vue3'
+export default {
+	components: { Link },
+	setup() {
+		
+	},
+}
 </script>

@@ -11,6 +11,7 @@
                     <div class="card">
                         <div class="card-header d-flex justify-content-between align-items-center">
                             <div>Akun</div>
+                            <input type="search" v-model="searchQuery" class="search-form" placeholder="Cari Akun .....">
                             <Link href="/akun/create" class="btn btn-primary btn-sm"><i class="fa-solid fa-plus"></i></Link>
                         </div>
                         <div class="card-body">
@@ -25,7 +26,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr v-for="(akun, index) in akuns" :key="akun.id">
+                                    <tr v-for="(akun, index) in searchedAkuns" :key="akun.id">
                                         <th scope="row">{{ index+1 }}</th>
                                         <td>{{ akun.name }}</td>
                                         <td>{{ akun.username }}</td>
@@ -49,7 +50,7 @@
 import NavBar from '../components/NavBar.vue'
 import Footer from '../components/Footer.vue'
 import { Link, router, usePage } from '@inertiajs/vue3'
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 
 export default {
     components: { NavBar, Footer, Link },
@@ -57,8 +58,21 @@ export default {
         akuns: Object
     },
     setup(props) {
+        
         const user = computed(() => usePage().props.user)
         const isLogin = computed(() => usePage().props.isLogin)
+
+        const searchQuery = ref("")
+        
+        const searchedAkuns = computed(() => {
+            return props.akuns.filter((akun) => {
+                return (
+                akun.name
+                    .toLowerCase()
+                    .indexOf(searchQuery.value.toLowerCase()) != -1
+                );
+            });
+        });
 
         function destroy(id){
             console.log(id)
@@ -68,6 +82,8 @@ export default {
         return {
             user,
             isLogin,
+            searchQuery,
+            searchedAkuns,
             destroy
         }
     },

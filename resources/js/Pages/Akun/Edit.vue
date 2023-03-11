@@ -54,7 +54,6 @@ export default {
             form.post('/akun', {
                 preserveScroll: true,
             })
-            //console.log(form)
         }
 
         return {

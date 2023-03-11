@@ -1,7 +1,8 @@
 <template>
     <nav class="navbar navbar-expand-lg bg-white shadow-sm">
         <div class="container">
-            <a class="navbar-brand" href="#">ZIS-APP</a>
+            <!-- <a class="navbar-brand" href="#">ZIS-APP</a> -->
+            <Link class="navbar-brand" href="/home">ZIS-APP</Link>
             <button v-if="user.name" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>

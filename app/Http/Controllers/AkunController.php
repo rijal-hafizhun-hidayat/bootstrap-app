@@ -11,10 +11,8 @@ use Illuminate\Support\Facades\Auth;
 class AkunController extends Controller
 {
     public function index(){
-        // dd(AkunModel::select('id', 'name','username', 'role')->get());
-        //dd(Auth::user());
         return Inertia::render('Akun/Index', [
-            'akuns' => AkunModel::select('id', 'name','username', 'role')->latest()->get()
+            'akuns' => AkunModel::select('id', 'name','username')->latest()->get()
         ]);
     }
 
@@ -22,7 +20,8 @@ class AkunController extends Controller
         return Inertia::render('Akun/Create');
     }
 
-    public function edit(){
+    public function edit($id){
+        dd($id);
         return Inertia::render('Akun/Edit');
     }
 
@@ -42,6 +41,8 @@ class AkunController extends Controller
     }
 
     public function destroy($id){
-        dd($id);
+        AkunModel::find($id)->delete();
+
+        return redirect()->route('akun')->with('message', 'hapus akun berhasil');
     }
 }

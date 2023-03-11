@@ -21,7 +21,6 @@
                                         <th scope="col">#</th>
                                         <th scope="col">Nama</th>
                                         <th scope="col">Username</th>
-                                        <th scope="col">Role</th>
                                         <th scope="col">Action</th>
                                     </tr>
                                 </thead>
@@ -30,10 +29,9 @@
                                         <th scope="row">{{ index+1 }}</th>
                                         <td>{{ akun.name }}</td>
                                         <td>{{ akun.username }}</td>
-                                        <td>{{ akun.role }}</td>
                                         <td>
                                             <Link @click="destroy(akun.id)" as="button" class="btn btn-danger me-2"><i class="fa-solid fa-trash"></i></Link>
-                                            <Link href="/akun/edit" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></Link>
+                                            <Link :href="`/akun/edit/${akun.id}`" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></Link>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -75,7 +73,6 @@ export default {
         });
 
         function destroy(id){
-            console.log(id)
             router.delete(`/akun/${id}`)
         }
 

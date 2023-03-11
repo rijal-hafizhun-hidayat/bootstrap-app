@@ -43,7 +43,6 @@
     <Footer />
 </template>
 <script>
-import { ref } from 'vue'
 import { useForm } from '@inertiajs/vue3'
 import NavBar from '../components/NavBar.vue'
 import Footer from '../components/Footer.vue'

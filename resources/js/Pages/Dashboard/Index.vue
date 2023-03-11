@@ -20,7 +20,7 @@
 <script>
 import NavBar from '../components/NavBar.vue'
 import Footer from '../components/Footer.vue'
-import { ref, computed } from 'vue'
+import { computed } from 'vue'
 import { usePage } from '@inertiajs/vue3'
 
 export default {

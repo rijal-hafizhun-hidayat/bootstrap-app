@@ -11,8 +11,17 @@ use Illuminate\Support\Facades\Auth;
 class AkunController extends Controller
 {
     public function index(){
+        // $items = AkunModel::select('id', 'name','username')->latest()->paginate(2)->through(function($item){
+        //     return [
+        //         'id' => $item->id,
+        //         'name' => $item->name,
+        //         'username' => $item->username
+        //     ];
+        // });
+        //dd(AkunModel::select('id', 'name','username')->latest()->paginate(2));
         return Inertia::render('Akun/Index', [
             'akuns' => AkunModel::select('id', 'name','username')->latest()->get()
+            //'akuns' => $items
         ]);
     }
 

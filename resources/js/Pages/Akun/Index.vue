@@ -47,6 +47,7 @@
 <script>
 import NavBar from '../components/NavBar.vue'
 import Footer from '../components/Footer.vue'
+import Pagination from '../components/Pagination.vue'
 import { Link, router, usePage } from '@inertiajs/vue3'
 import { computed, ref } from 'vue'
 

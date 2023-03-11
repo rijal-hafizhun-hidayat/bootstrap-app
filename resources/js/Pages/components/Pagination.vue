@@ -11,6 +11,9 @@
 </template>
 <script>
 export default {
+    props: {
+        akuns: Array
+    },
     setup() {
         
     },

@@ -24,10 +24,6 @@
                                         <option value="2">Bendahara</option>
                                     </select>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="password" class="form-label">Password</label>
-                                    <input type="text" v-model="form.password" class="form-control" id="password">
-                                </div>
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </form>
                         </div>
@@ -38,20 +34,29 @@
     </main>
 </template>
 <script>
+import { reactive, onMounted } from 'vue'
 import { useForm } from '@inertiajs/vue3'
 import NavBar from '../components/NavBar.vue'
 export default {
     components: { NavBar },
-    setup() {
+    props: {
+        akuns: Object
+    },
+    setup(props) {
+        console.log(props.akuns)
+        // onMounted(() => {
+        //     const akun = reactive({
+        //         name: 
+        //     })
+        // })
         const form = useForm({
-            name: null,
-            username: null,
-            role: '',
-            password: null
+            name: props.akuns.name,
+            username: props.akuns.username,
+            role: props.akuns.role
         })
 
         function submit(){
-            form.post('/akun', {
+            form.put(`/akun/${props.akuns.id}`, {
                 preserveScroll: true,
             })
         }

@@ -30,8 +30,9 @@ class AkunController extends Controller
     }
 
     public function edit($id){
-        dd($id);
-        return Inertia::render('Akun/Edit');
+        return Inertia::render('Akun/Edit', [
+            'akuns' => AkunModel::select('id', 'name', 'username', 'role')->find($id)
+        ]);
     }
 
     public function store(Request $request){
@@ -53,5 +54,11 @@ class AkunController extends Controller
         AkunModel::find($id)->delete();
 
         return redirect()->route('akun')->with('message', 'hapus akun berhasil');
+    }
+
+    public function update(Request $request ,$id){
+        AkunModel::where('id', $id)->update($request->all());
+
+        return redirect()->route('akun')->with('message', 'edit akun berhasil');
     }
 }

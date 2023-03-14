@@ -3,6 +3,14 @@
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
+//define route
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AkunController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ZakatController;
+use App\Http\Controllers\MakananPokokController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,22 +26,32 @@ Route::get('/', function () {
     return Inertia::render('welcome/Index');
 })->name('welcome');
 
-Route::get('/login', [App\Http\Controllers\AuthController::class, 'index'])->name('login');
-Route::post('/login', [App\Http\Controllers\AuthController::class, 'login'])->name('login.auth');
+Route::get('/login', [AuthController::class, 'index'])->name('login');
+Route::post('/login', [AuthController::class, 'login'])->name('login.auth');
 
 Route::middleware(['isLogin'])->group(function () {
-    Route::post('/logout', [App\Http\Controllers\AuthController::class, 'logout'])->name('logout.auth');
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout.auth');
 
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
 
     //akun
-    Route::get('/akun', [App\Http\Controllers\AkunController::class, 'index'])->name('akun');
-    Route::get('/akun/create', [App\Http\Controllers\AkunController::class, 'create'])->name('akun.create');
-    Route::get('/akun/edit/{id}', [App\Http\Controllers\AkunController::class, 'edit'])->name('akun.edit');
-    Route::post('/akun', [App\Http\Controllers\AkunController::class, 'store'])->name('akun.store');
-    Route::delete('/akun/{id}', [App\Http\Controllers\AkunController::class, 'destroy'])->name('akun.destroy');
-    Route::put('/akun/{id}', [App\Http\Controllers\AkunController::class, 'update'])->name('akun.update');
+    Route::get('/akun', [AkunController::class, 'index'])->name('akun');
+    Route::get('/akun/create', [AkunController::class, 'create'])->name('akun.create');
+    Route::get('/akun/edit/{id}', [AkunController::class, 'edit'])->name('akun.edit');
+    Route::post('/akun', [AkunController::class, 'store'])->name('akun.store');
+    Route::delete('/akun/{id}', [AkunController::class, 'destroy'])->name('akun.destroy');
+    Route::put('/akun/{id}', [AkunController::class, 'update'])->name('akun.update');
+
+    //zakat
+    Route::get('/zakat', [ZakatController::class, 'index'])->name('zakat');
+    Route::get('/zakat/create', [ZakatController::class, 'create'])->name('zakat.create');
+
+    //makanan pokok
+    Route::get('/makanan-pokok', [MakananPokokController::class, 'index'])->name('makanan-pokok');
+    Route::get('/makanan-pokok/create', [MakananPokokController::class, 'create'])->name('makanan-pokok.create');
+    Route::post('/makanan-pokok', [MakananPokokController::class, 'store'])->name('makanan-pokok.store');
+    Route::delete('/makanan-pokok/{id}', [MakananPokokController::class, 'destroy'])->name('makanan-pokok.destroy');
 
     //profile
-    Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
+    Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
 });

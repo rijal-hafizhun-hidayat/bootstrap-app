@@ -13,7 +13,8 @@
                             Zakat
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Dana</a></li>
+                            <li><Link href="/zakat" class="dropdown-item">Data</Link></li>
+                            <li><Link href="/makanan-pokok" class="dropdown-item">Makanan Pokok</Link></li>
                             <li><a class="dropdown-item" href="#">Print</a></li>
                         </ul>
                     </li>

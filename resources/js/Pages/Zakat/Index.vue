@@ -28,7 +28,18 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    
+                                    <tr v-for="(zakat, index) in searchedZakats" :key="zakat.id">
+                                        <th scope="row">{{ index+1 }}</th>
+                                        <td>{{ zakat.nama_donatur }}</td>
+                                        <td>{{ zakat.created_at }}</td>
+                                        <td>{{ zakat.jenis_zakat }}</td>
+                                        <td>{{ zakat.nama }}</td>
+                                        <td>{{ zakat.jumlah }}</td>
+                                        <td>
+                                            <Link as="button" @click="destroy(zakat.id)" class="btn btn-danger me-2"><i class="fa-solid fa-trash"></i></Link>
+                                            <Link :href="`/zakat/${zakat.id}`" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></Link>
+                                        </td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -42,15 +53,35 @@
 <script>
 import NavBar from '../components/NavBar.vue'
 import Footer from '../components/Footer.vue'
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import { Link, router, usePage } from '@inertiajs/vue3'
 export default {
     components: { NavBar, Footer, Link },
-    setup() {
+    props: {
+        zakats: Object
+    },
+    setup(props) {
         const searchQuery = ref('')
 
+        const searchedZakats = computed(() => {
+            return props.zakats.filter((zakat) => {
+                return (
+                    zakat.nama_donatur
+                        .toLowerCase()
+                        .indexOf(searchQuery.value.toLowerCase()) != -1 
+                );
+            });
+        });
+
+        function destroy(id){
+            //console.log(id)
+            router.delete(`/zakat/${id}`)
+        }
+
         return {
-            searchQuery
+            searchedZakats,
+            searchQuery,
+            destroy
         }
     },
 }

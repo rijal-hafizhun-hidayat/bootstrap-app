@@ -25,13 +25,13 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr v-for="(makananPokok, index) in makananPokoks" :key="makananPokok.id">
+                                    <tr v-for="(makananPokok, index) in searchedMakananPokoks" :key="makananPokok.id">
                                         <th scope="row">{{ index+1 }}</th>
                                         <td>{{ makananPokok.nama }}</td>
                                         <td>Rp.{{ makananPokok.harga }}</td>
                                         <td>
                                             <Link as="button" @click="destroy(makananPokok.id)" class="btn btn-danger me-2"><i class="fa-solid fa-trash"></i></Link>
-                                            <Link href="#" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></Link>
+                                            <Link :href="`/makanan-pokok/${makananPokok.id}`" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></Link>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -48,18 +48,34 @@
 import NavBar from '../components/NavBar.vue'
 import Footer from '../components/Footer.vue'
 import { Link, router } from '@inertiajs/vue3'
+import { ref, computed } from 'vue'
 export default {
     components: { NavBar, Footer, Link },
     props: {
         makananPokoks: Object
     },
     setup(props) {
+
+        const searchQuery = ref("")
+        
+        const searchedMakananPokoks = computed(() => {
+            return props.makananPokoks.filter((makananPokok) => {
+                return (
+                    makananPokok.nama
+                        .toLowerCase()
+                        .indexOf(searchQuery.value.toLowerCase()) != -1 
+                );
+            });
+        });
+
         function destroy(id){
             router.delete(`/makanan-pokok/${id}`)
         }
 
         return {
-            destroy
+            destroy,
+            searchQuery,
+            searchedMakananPokoks
         }
     },
 }

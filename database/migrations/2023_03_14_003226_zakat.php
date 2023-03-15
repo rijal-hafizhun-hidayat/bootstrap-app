@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('nama_donatur');
             $table->string('jenis_zakat');
-            $table->string('satuan');
+            $table->integer('makanan_pokok_id');
             $table->integer('jumlah');
             $table->timestamps();
         });

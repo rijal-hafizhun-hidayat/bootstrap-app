@@ -10,7 +10,7 @@
                     </div>
                     <div class="card">
                         <div class="card-header d-flex justify-content-between align-items-center">
-                            <div>Tambah Makanan Pokok</div>
+                            <div>Edit Makanan Pokok</div>
                         </div>
                         <div class="card-body">
                             <form @submit.prevent="submit()">
@@ -36,24 +36,16 @@
 import NavBar from '../components/NavBar.vue'
 import Footer from '../components/Footer.vue'
 import { useForm } from '@inertiajs/vue3'
-import { watch, ref } from "vue";
 export default {
     components: { NavBar, Footer },
-    setup() {
+    props: {
+        makananPokok: Object
+    },
+    setup(props) {
         const makananPokok = useForm({
-            nama: '',
-            harga: null
+            nama: props.makananPokok.nama,
+            harga: props.makananPokok.harga
         })
-
-        // watch(makananPokok.harga, () => {
-
-        // });
-
-        function submit(){
-            makananPokok.post('/makanan-pokok', {
-                preserveScroll: true,
-            })
-        }
 
         function NumbersOnly(evt) {
             evt = (evt) ? evt : window.event;
@@ -61,8 +53,15 @@ export default {
             if ((charCode > 31 && (charCode < 48 || charCode > 57)) && charCode !== 46) {
                 evt.preventDefault();
             } else {
+                //makananPokok.harga = makananPokok.harga.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
                 return true;
             }
+        }
+
+        function submit(){
+            makananPokok.put(`/makanan-pokok/${props.makananPokok.id}`, {
+                preserveScroll: true,
+            })
         }
 
         return {

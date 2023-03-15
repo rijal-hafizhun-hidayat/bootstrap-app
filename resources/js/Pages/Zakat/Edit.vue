@@ -10,7 +10,7 @@
                     </div>
                     <div class="card">
                         <div class="card-header d-flex justify-content-between align-items-center">
-                            <div>Tambah Zakat</div>
+                            <div>Edit Data Zakat</div>
                         </div>
                         <div class="card-body">
                             <form @submit.prevent="submit">
@@ -54,37 +54,10 @@ import { useForm } from '@inertiajs/vue3'
 export default {
     components: { NavBar, Footer },
     props: {
-        makananPokoks: Object
+        zakat: Object
     },
     setup(props) {
-        const zakat = useForm({
-            nama_donatur: '',
-            jenis_zakat: '',
-            makanan_pokok_id: props.makananPokoks.id,
-            jumlah: ''
-        })
-
-        function NumbersOnly(evt) {
-            evt = (evt) ? evt : window.event;
-            var charCode = (evt.which) ? evt.which : evt.keyCode;
-            if ((charCode > 31 && (charCode < 48 || charCode > 57)) && charCode !== 46) {
-                evt.preventDefault();
-            } else {
-                return true;
-            }
-        }
-
-        function submit(){
-            zakat.post('/zakat', {
-                preserveScroll: true,
-            })
-        }
-
-        return {
-            submit,
-            NumbersOnly,
-            zakat
-        }
+        
     },
 }
 </script>

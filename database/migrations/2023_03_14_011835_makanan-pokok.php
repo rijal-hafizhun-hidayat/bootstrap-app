@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('makanan_pokok', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->string('harga');
+            $table->bigInteger('harga');
             $table->timestamps();
         });
     }

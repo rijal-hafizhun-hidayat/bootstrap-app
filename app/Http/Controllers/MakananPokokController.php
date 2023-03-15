@@ -18,10 +18,23 @@ class MakananPokokController extends Controller
         return Inertia::render('Makanan-Pokok/Create');
     }
 
+    public function edit($id){
+        //dd(MakananPokokModel::find($id));
+        return Inertia::render('Makanan-Pokok/Edit', [
+            'makananPokok' => MakananPokokModel::find($id)
+        ]);
+    }
+
     public function store(Request $request){
         MakananPokokModel::create($request->all());
 
         return redirect()->route('makanan-pokok')->with('message', 'tambah makanan pokok berhasil');
+    }
+
+    public function update(Request $request, $id){
+        MakananPokokModel::where('id', $id)->update($request->all());
+
+        return redirect()->route('makanan-pokok')->with('message', 'edit makanan pokok berhasil');
     }
 
     public function destroy($id){

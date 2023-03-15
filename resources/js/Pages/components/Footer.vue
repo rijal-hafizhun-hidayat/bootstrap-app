@@ -12,7 +12,6 @@ import { ref } from 'vue'
 export default {
   setup() {
     const year = ref(new Date().getFullYear())
-    console.log(year)
 
     return {
       year

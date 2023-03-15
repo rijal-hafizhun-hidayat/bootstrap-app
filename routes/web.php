@@ -37,20 +37,25 @@ Route::middleware(['isLogin'])->group(function () {
     //akun
     Route::get('/akun', [AkunController::class, 'index'])->name('akun');
     Route::get('/akun/create', [AkunController::class, 'create'])->name('akun.create');
-    Route::get('/akun/edit/{id}', [AkunController::class, 'edit'])->name('akun.edit');
+    Route::get('/akun/{id}', [AkunController::class, 'edit'])->name('akun.edit');
     Route::post('/akun', [AkunController::class, 'store'])->name('akun.store');
     Route::delete('/akun/{id}', [AkunController::class, 'destroy'])->name('akun.destroy');
     Route::put('/akun/{id}', [AkunController::class, 'update'])->name('akun.update');
 
     //zakat
     Route::get('/zakat', [ZakatController::class, 'index'])->name('zakat');
+    Route::get('/zakat/{id}', [ZakatController::class, 'edit'])->name('zakat.edit');
     Route::get('/zakat/create', [ZakatController::class, 'create'])->name('zakat.create');
+    Route::post('/zakat', [ZakatController::class, 'store'])->name('zakat.store');
+    Route::delete('/zakat/{id}', [ZakatController::class, 'destroy'])->name('zakat.destroy');
 
     //makanan pokok
     Route::get('/makanan-pokok', [MakananPokokController::class, 'index'])->name('makanan-pokok');
     Route::get('/makanan-pokok/create', [MakananPokokController::class, 'create'])->name('makanan-pokok.create');
+    Route::get('/makanan-pokok/{id}', [MakananPokokController::class, 'edit'])->name('makanan-pokok.edit');
     Route::post('/makanan-pokok', [MakananPokokController::class, 'store'])->name('makanan-pokok.store');
     Route::delete('/makanan-pokok/{id}', [MakananPokokController::class, 'destroy'])->name('makanan-pokok.destroy');
+    Route::put('/makanan-pokok/{id}', [MakananPokokController::class, 'update'])->name('makanan-pokok.update');
 
     //profile
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');

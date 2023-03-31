@@ -13,7 +13,7 @@
                             <div>Edit Data Zakat</div>
                         </div>
                         <div class="card-body">
-                            <form @submit.prevent="submit">
+                           <form @submit.prevent="submit">
                                 <div class="mb-3">
                                     <label for="nama_donatur" class="form-label">Nama Donatur</label>
                                     <input type="text" v-model="zakat.nama_donatur" class="form-control" id="nama_donatur">
@@ -54,10 +54,27 @@ import { useForm } from '@inertiajs/vue3'
 export default {
     components: { NavBar, Footer },
     props: {
-        zakat: Object
+        zakat: Object,
+        makananPokoks: Object
     },
     setup(props) {
-        
+        const zakat = useForm({
+            nama_donatur: props.zakat.nama_donatur,
+            jenis_zakat: props.zakat.jenis_zakat,
+            makanan_pokok_id: props.zakat.makanan_pokok_id,
+            jumlah: props.zakat.jumlah,
+        })
+
+        function submit(){
+            zakat.put(`/zakat/${props.zakat.id}`, {
+                preserveScroll: true,
+            })
+        }
+
+        return {
+            zakat,
+            submit
+        }
     },
 }
 </script>

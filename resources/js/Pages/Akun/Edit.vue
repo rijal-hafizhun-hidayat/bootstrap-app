@@ -34,7 +34,6 @@
     </main>
 </template>
 <script>
-import { reactive, onMounted } from 'vue'
 import { useForm } from '@inertiajs/vue3'
 import NavBar from '../components/NavBar.vue'
 export default {
@@ -44,11 +43,7 @@ export default {
     },
     setup(props) {
         console.log(props.akuns)
-        // onMounted(() => {
-        //     const akun = reactive({
-        //         name: 
-        //     })
-        // })
+        
         const form = useForm({
             name: props.akuns.name,
             username: props.akuns.username,

@@ -14,7 +14,16 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li><Link href="/zakat" class="dropdown-item">Data</Link></li>
-                            <li><Link href="/makanan-pokok" class="dropdown-item">Makanan Pokok</Link></li>
+                            <li><Link href="/makanan-pokok" class="dropdown-item">Sha'</Link></li>
+                            <li><a class="dropdown-item" href="#">Print</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Infaq
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><Link href="/infaq" class="dropdown-item">Data</Link></li>
                             <li><a class="dropdown-item" href="#">Print</a></li>
                         </ul>
                     </li>

@@ -22,8 +22,11 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials)) {
 
+            //dd(Auth::id());
             $request->session()->regenerate();
             $request->session()->put('isLogin', true);
+            $request->session()->put('id', Auth::id());
+            //dd(session('id'));
 
             return redirect()->intended('home');  
         }

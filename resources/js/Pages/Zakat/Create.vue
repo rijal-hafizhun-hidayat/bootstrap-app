@@ -60,9 +60,11 @@ export default {
         const zakat = useForm({
             nama_donatur: '',
             jenis_zakat: '',
-            makanan_pokok_id: props.makananPokoks.id,
+            makanan_pokok_id: '',
             jumlah: ''
         })
+
+        console.log(props.makananPokoks)
 
         function NumbersOnly(evt) {
             evt = (evt) ? evt : window.event;

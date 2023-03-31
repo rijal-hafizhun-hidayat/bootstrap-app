@@ -10,16 +10,16 @@
                     </div>
                     <div class="card">
                         <div class="card-header d-flex justify-content-between align-items-center">
-                            <div>Tambah Makanan Pokok</div>
+                            <div>Tambah Sha'</div>
                         </div>
                         <div class="card-body">
                             <form @submit.prevent="submit()">
                                 <div class="mb-3">
-                                    <label for="makanan-pokok" class="form-label">Nama Makanan Pokok</label>
+                                    <label for="makanan-pokok" class="form-label">Nama Sha'</label>
                                     <input type="text" class="form-control" v-model="makananPokok.nama" id="makanan-pokok">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="harga" class="form-label">Harga / 2,5 Kg</label>
+                                    <label for="harga" class="form-label">Nominal</label>
                                     <input type="text" v-on:keypress="NumbersOnly" class="form-control" v-model="makananPokok.harga" id="harga">
                                 </div>
                                 <button type="submit" class="btn btn-primary">Submit</button>
@@ -39,15 +39,14 @@ import { useForm } from '@inertiajs/vue3'
 import { watch, ref } from "vue";
 export default {
     components: { NavBar, Footer },
+    props: {
+        errors: Object
+    },
     setup() {
         const makananPokok = useForm({
             nama: '',
             harga: null
         })
-
-        // watch(makananPokok.harga, () => {
-
-        // });
 
         function submit(){
             makananPokok.post('/makanan-pokok', {

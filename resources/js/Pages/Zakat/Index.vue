@@ -12,7 +12,8 @@
                         <div class="card-header d-flex justify-content-between align-items-center">
                             <div>Data Zakat</div>
                             <input type="search" v-model="searchQuery" class="search-form" placeholder="Cari Nama Donatur .....">
-                            <Link href="/zakat/create" class="btn btn-primary btn-sm"><i class="fa-solid fa-plus"></i></Link>
+                            <!-- <Link href="#" class="btn btn-primary btn-sm"><i class="fa-solid fa-plus"></i></Link> -->
+                            <button class="btn btn-primary btn-sm" @click="create()"><i class="fa-solid fa-plus"></i></button>
                         </div>
                         <div class="card-body">
                             <table class="table table-hover">
@@ -74,14 +75,20 @@ export default {
         });
 
         function destroy(id){
-            //console.log(id)
             router.delete(`/zakat/${id}`)
+        }
+
+        function create(){
+            router.visit('/zakat/add', {
+                method: 'get',
+            })
         }
 
         return {
             searchedZakats,
             searchQuery,
-            destroy
+            destroy,
+            create
         }
     },
 }

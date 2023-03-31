@@ -13,7 +13,7 @@ class StorePostRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,10 +24,11 @@ class StorePostRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'      => 'required|string',
-            'username'  => 'required|string',
-            'role'      => 'required|integer|max:1',
-            'password'  => 'required|string'
+            'name'          => 'required|string',
+            'username'      => 'required|string',
+            'role'          => 'required|integer|max:1',
+            'password'      => 'required|string',
+            'newUsername'   => 'required|string'
         ];
     }
 
@@ -42,6 +43,7 @@ class StorePostRequest extends FormRequest
             'role.max'          => 'isi form role melebihi ketentuan',
             'password.required' => 'form password wajib di isi',
             'password.string'   => 'form password wajib di isi dengan string',
+            'newUsername.required' => 'form username baru wajib di isi',
         ];
     }
 }

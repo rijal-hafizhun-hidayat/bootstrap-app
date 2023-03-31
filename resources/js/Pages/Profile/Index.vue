@@ -1,7 +1,7 @@
 <template>
     <Head title="Profile" />
     <NavBar />
-    <ChangeUsername :username="profile.username"/>
+    <ChangeUsername />
     <ChangePassword />
     <Footer />
     
@@ -17,7 +17,7 @@ import Footer from '../components/Footer.vue'
 export default {
     components: { NavBar, Footer, ChangeUsername, Head, ChangePassword },
     props: {
-        profile: Object
+        profile: Object,
     },
     setup(props) {
        console.log(props.profile)

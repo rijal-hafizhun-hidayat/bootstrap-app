@@ -32,7 +32,8 @@ class ZakatController extends Controller
 
     public function edit($id){
         return Inertia::render('Zakat/Edit', [
-            'zakat' => ZakatModel::find($id)
+            'zakat' => ZakatModel::find($id),
+            'makananPokoks' => MakananPokokModel::all()
         ]);
     }
 
@@ -42,8 +43,13 @@ class ZakatController extends Controller
         return redirect()->route('zakat')->with('message', 'tambah data zakat berhasil');
     }
 
+    public function update(Request $request, $id){
+        ZakatModel::where('id', $id)->update($request->all());
+
+        return redirect()->route('zakat')->with('message', 'update data zakat berhasil');
+    }
+
     public function destroy($id){
-        //dd($id);
         ZakatModel::destroy($id);
 
         return redirect()->route('zakat')->with('message', 'hapus data zakat berhasil');

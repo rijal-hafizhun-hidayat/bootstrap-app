@@ -26,6 +26,11 @@ class MakananPokokController extends Controller
     }
 
     public function store(Request $request){
+        $request->validate([
+            'nama' => 'required|string',
+            'nominal' => 'required|numeric'
+        ]);
+
         MakananPokokModel::create($request->all());
 
         return redirect()->route('makanan-pokok')->with('message', 'tambah makanan pokok berhasil');

@@ -10,6 +10,7 @@ use App\Http\Controllers\AkunController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ZakatController;
 use App\Http\Controllers\MakananPokokController;
+use App\Http\Controllers\InfaqController;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,9 +46,15 @@ Route::middleware(['isLogin'])->group(function () {
     //zakat
     Route::get('/zakat', [ZakatController::class, 'index'])->name('zakat');
     Route::get('/zakat/{id}', [ZakatController::class, 'edit'])->name('zakat.edit');
-    Route::get('/zakat/create', [ZakatController::class, 'create'])->name('zakat.create');
+    Route::get('/zakat/add', [ZakatController::class, 'create'])->name('zakat.create');
     Route::post('/zakat', [ZakatController::class, 'store'])->name('zakat.store');
     Route::delete('/zakat/{id}', [ZakatController::class, 'destroy'])->name('zakat.destroy');
+    Route::put('/zakat/{id}', [ZakatController::class, 'update'])->name('zakat.update');
+
+    //infaq
+    Route::get('/infaq', [InfaqController::class, 'index'])->name('infaq');
+    Route::get('/infaq/add', [InfaqController::class, 'create'])->name('infaq.create');
+    Route::post('/infaq', [InfaqController::class, 'store'])->name('infaq.store');
 
     //makanan pokok
     Route::get('/makanan-pokok', [MakananPokokController::class, 'index'])->name('makanan-pokok');
@@ -59,4 +66,11 @@ Route::middleware(['isLogin'])->group(function () {
 
     //profile
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+
+    //profile API
+    Route::get('/getUsername', [ProfileController::class, 'getUsername'])->name('getUsername');
+    Route::get('/getPassword', [ProfileController::class, 'getPassword'])->name('getPassword');
+    Route::put('/updateUsername', [ProfileController::class, 'updateUsername'])->name('updateUsername');
+    Route::put('/updatePassword', [ProfileController::class, 'updatePassword'])->name('updatePassword');
+
 });

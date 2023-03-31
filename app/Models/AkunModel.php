@@ -12,4 +12,8 @@ class AkunModel extends Model
     protected $primaryKey = 'id';
     protected $fillable = ['name', 'username', 'role', 'password'];
     protected $guarded = ['remember_token'];
+    protected $hidden = [
+        'password',
+        'role',
+    ];
 }

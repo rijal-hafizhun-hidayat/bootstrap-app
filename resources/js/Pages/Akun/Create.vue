@@ -7,7 +7,7 @@
                     <div class="card">
                         <div class="card-header">Tambah Akun</div>
                         <div class="card-body">
-                            <form @submit.prevent="form.post('/akun')" class="mt-3">
+                            <form @submit.prevent="submit()" class="mt-3">
                                 <div class="mb-3">
                                     <label for="name" class="form-label">Nama</label>
                                     <input type="text" v-model="form.name" :class="{ 'is-invalid': form.errors.name }" class="form-control" id="name" required>
@@ -21,7 +21,7 @@
                                 <div class="mb-3">
                                     <label for="role" class="form-label">Role</label>
                                     <select class="form-select" v-model="form.role" :class="{ 'is-invalid': form.errors.role }" aria-label="Default select example" required>
-                                        <option selected value="">Open this select menu</option>
+                                        <option disabled selected value="">-- pilih --</option>
                                         <option value="1">Admin</option>
                                         <option value="2">Bendahara</option>
                                     </select>
@@ -58,7 +58,6 @@ export default {
 
         function submit(){
             form.post('/akun')
-            //console.log(props)
         }
 
         return {

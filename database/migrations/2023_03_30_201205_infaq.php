@@ -13,13 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('zakat', function (Blueprint $table) {
+        Schema::create('infaq', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_donatur');
-            $table->string('jenis_zakat');
-            $table->integer('makanan_pokok_id');
-            $table->integer('jumlah');
-            $table->bigInteger('nominal');
+            $table->string('nama');
+            $table->string('nomor_hp');
+            $table->string('rekening');
+            $table->bigInteger('jumlah');
             $table->timestamps();
         });
     }
@@ -31,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('zakat');
+        Schema::dropIfExists('infaq');
     }
 };

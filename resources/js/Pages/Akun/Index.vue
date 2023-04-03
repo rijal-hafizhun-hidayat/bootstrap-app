@@ -1,4 +1,5 @@
 <template>
+    <Head title="Akun" />
     <NavBar />
     <main class="py-5">
         <div class="container">
@@ -31,7 +32,7 @@
                                         <td>{{ akun.username }}</td>
                                         <td>
                                             <Link @click="destroy(akun.id)" as="button" class="btn btn-danger me-2"><i class="fa-solid fa-trash"></i></Link>
-                                            <Link :href="`/akun/edit/${akun.id}`" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></Link>
+                                            <Link :href="`/akun/${akun.id}`" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></Link>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -48,11 +49,11 @@
 import NavBar from '../components/NavBar.vue'
 import Footer from '../components/Footer.vue'
 import Pagination from '../components/Pagination.vue'
-import { Link, router, usePage } from '@inertiajs/vue3'
+import { Link, router, usePage, Head } from '@inertiajs/vue3'
 import { computed, ref } from 'vue'
 
 export default {
-    components: { NavBar, Footer, Link },
+    components: { NavBar, Footer, Link, Head },
     props: {
         akuns: Object
     },

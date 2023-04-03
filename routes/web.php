@@ -11,6 +11,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ZakatController;
 use App\Http\Controllers\MakananPokokController;
 use App\Http\Controllers\InfaqController;
+use App\Models\InfaqModel;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,6 +56,7 @@ Route::middleware(['isLogin'])->group(function () {
     Route::get('/infaq', [InfaqController::class, 'index'])->name('infaq');
     Route::get('/infaq/add', [InfaqController::class, 'create'])->name('infaq.create');
     Route::post('/infaq', [InfaqController::class, 'store'])->name('infaq.store');
+    Route::delete('/infaq/{id}', [InfaqController::class, 'destroy'])->name('infaq.destroy');
 
     //makanan pokok
     Route::get('/makanan-pokok', [MakananPokokController::class, 'index'])->name('makanan-pokok');

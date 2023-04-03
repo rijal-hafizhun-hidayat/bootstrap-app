@@ -33,9 +33,9 @@
 </template>
 
 <script>
-import { useForm } from '@inertiajs/vue3'
 import Swal from 'sweetalert2'
 import { reactive, onMounted, ref } from 'vue'
+import { Head } from '@inertiajs/vue3';
 import axios from 'axios';
 export default {
     setup(){
@@ -88,6 +88,9 @@ export default {
 @media (min-width: 992px){
     .py-5 .container .row .col-sm-11 .card .card-body  form{
         width: 50%;
+    }
+    #oldUsername{
+        cursor: not-allowed;
     }
 }
     

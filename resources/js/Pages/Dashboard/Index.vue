@@ -1,4 +1,5 @@
 <template>
+    <Head title="Dashboard" />
     <NavBar />
     <main class="py-5">
         <div class="container">
@@ -21,10 +22,10 @@
 import NavBar from '../components/NavBar.vue'
 import Footer from '../components/Footer.vue'
 import { computed } from 'vue'
-import { usePage } from '@inertiajs/vue3'
+import { usePage, Head } from '@inertiajs/vue3'
 
 export default {
-    components: { NavBar, Footer },
+    components: { NavBar, Footer, Head },
     setup() {
 
         const user = computed(() => usePage().props.user)

@@ -27,15 +27,17 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <!-- <tr v-for="(makananPokok, index) in searchedMakananPokoks" :key="makananPokok.id">
-                                        <th scope="row">{{ index+1 }}</th>
-                                        <td>{{ makananPokok.nama }}</td>
-                                        <td>Rp.{{ makananPokok.harga }}</td>
+                                    <tr v-for="(infaq, index) in infaqs" :key="infaq.id">
+                                        <td>{{ index+1 }}</td>
+                                        <td>{{ infaq.nama }}</td>
+                                        <td>{{ infaq.nomor_hp }}</td>
+                                        <td>{{ infaq.rekening }}</td>
+                                        <td>{{ numberWithDots(infaq.jumlah) }}</td>
                                         <td>
-                                            <Link as="button" @click="destroy(makananPokok.id)" class="btn btn-danger me-2"><i class="fa-solid fa-trash"></i></Link>
-                                            <Link :href="`/makanan-pokok/${makananPokok.id}`" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></Link>
+                                            <Link as="button" @click="destroy(infaq.id)" class="btn btn-danger me-2"><i class="fa-solid fa-trash"></i></Link>
+                                            <Link :href="`/infaq/${infaq.id}`" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></Link>
                                         </td>
-                                    </tr> -->
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -53,10 +55,22 @@ import { Link, router } from '@inertiajs/vue3'
 export default {
     components: { NavBar, Footer, Link },
     props: {
-        infaq: Object
+        infaqs: Object
     },
-    setup(props){
-        console.log(props.infaq)
+    setup(){
+
+        function destroy(id){
+            router.delete(`/infaq/${id}`);
+        }
+
+        function numberWithDots(x) {
+            return 'Rp ' + x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+        }
+
+        return {
+            destroy,
+            numberWithDots
+        }
     }
 }
 </script>

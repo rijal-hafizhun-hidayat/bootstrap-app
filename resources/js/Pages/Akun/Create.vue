@@ -1,4 +1,5 @@
 <template>
+    <Head title="Tambah Akun" />
     <NavBar />
     <main class="py-5">
         <div class="container">
@@ -43,11 +44,11 @@
     <Footer />
 </template>
 <script>
-import { useForm } from '@inertiajs/vue3'
+import { useForm, Head } from '@inertiajs/vue3'
 import NavBar from '../components/NavBar.vue'
 import Footer from '../components/Footer.vue'
 export default {
-    components: { NavBar, Footer },
+    components: { NavBar, Footer, Head },
     setup() {
         const form = useForm({
             name: '',

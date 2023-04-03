@@ -1,4 +1,5 @@
 <template>
+    <Head title="Login" />
     <NavBar />
     <div class="container mt-5">
         <div class="row justify-content-center">
@@ -44,9 +45,9 @@
 <script>
 import NavBar from '../components/NavBar.vue'
 import Footer from '../components/Footer.vue'
-import { useForm } from '@inertiajs/vue3'
+import { useForm, Head } from '@inertiajs/vue3'
 export default {
-    components: { NavBar, Footer },
+    components: { NavBar, Footer, Head },
     props: {
         errors: Object
     },

@@ -1,4 +1,5 @@
 <template>
+	<Head title="Selamat Datang"/>
 	<div class="container">
 		<div class="row">
 			<div v-if="$page.props.flash.message" class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -12,8 +13,9 @@
 </template>
 <script>
 import { Link } from '@inertiajs/vue3'
+import { Head } from '@inertiajs/vue3'
 export default {
-	components: { Link },
+	components: { Link, Head },
 	setup() {
 		
 	},

@@ -19,7 +19,7 @@
                                 <div class="mb-3">
                                     <label for="role" class="form-label">Role</label>
                                     <select class="form-select" v-model="form.role" aria-label="Default select example">
-                                        <option selected value="">Open this select menu</option>
+                                        <option selected disabled value="">-- Pilih Menu --</option>
                                         <option value="1">Admin</option>
                                         <option value="2">Bendahara</option>
                                     </select>

@@ -10,7 +10,7 @@ class InfaqController extends Controller
 {
     public function index(){
         return Inertia::render('Infaq/Index', [
-            'infaq' => InfaqModel::all()
+            'infaqs' => InfaqModel::all()
         ]);
     }
 
@@ -29,5 +29,11 @@ class InfaqController extends Controller
         InfaqModel::create($request->all());
 
         return redirect()->route('infaq')->with('message', 'tambah data infaq berhasil');
+    }
+
+    public function destroy($id){
+        InfaqModel::destroy($id);
+
+        return redirect()->route('infaq')->with('message', 'hapus data infaq berhasil');
     }
 }

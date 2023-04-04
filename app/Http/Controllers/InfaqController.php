@@ -36,4 +36,14 @@ class InfaqController extends Controller
 
         return redirect()->route('infaq')->with('message', 'hapus data infaq berhasil');
     }
+
+    public function show($id){
+        return Inertia::render('Infaq/Show',[
+            'Infaq' => InfaqModel::find($id)
+        ]);
+    }
+
+    public function update(Request $request){
+        dd($request->all());
+    }
 }

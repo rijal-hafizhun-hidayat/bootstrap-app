@@ -55,6 +55,8 @@ Route::middleware(['isLogin'])->group(function () {
     //infaq
     Route::get('/infaq', [InfaqController::class, 'index'])->name('infaq');
     Route::get('/infaq/add', [InfaqController::class, 'create'])->name('infaq.create');
+    Route::get('/infaq/{id}', [InfaqController::class, 'show'])->name('infaq.show');
+    Route::put('/infaq/{id}', [InfaqController::class, 'update'])->name('infaq.update');
     Route::post('/infaq', [InfaqController::class, 'store'])->name('infaq.store');
     Route::delete('/infaq/{id}', [InfaqController::class, 'destroy'])->name('infaq.destroy');
 

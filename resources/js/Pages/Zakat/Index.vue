@@ -55,7 +55,7 @@
 import NavBar from '../components/NavBar.vue'
 import Footer from '../components/Footer.vue'
 import { ref, computed } from 'vue'
-import { Link, router, usePage } from '@inertiajs/vue3'
+import { Link, router } from '@inertiajs/vue3'
 export default {
     components: { NavBar, Footer, Link },
     props: {

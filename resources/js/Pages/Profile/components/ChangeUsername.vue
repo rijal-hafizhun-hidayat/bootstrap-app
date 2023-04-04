@@ -35,7 +35,6 @@
 <script>
 import Swal from 'sweetalert2'
 import { reactive, onMounted, ref } from 'vue'
-import { Head } from '@inertiajs/vue3';
 import axios from 'axios';
 export default {
     setup(){

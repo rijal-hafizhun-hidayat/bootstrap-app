@@ -1,11 +1,12 @@
 <template>
+    <Head title="Edit Infaq" />
     <NavBar />
     <main class="py-5">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-8">
                     <div class="card">
-                        <div class="card-header">Tambah Infaq</div>
+                        <div class="card-header">Edit Infaq</div>
                         <div class="card-body">
                             <form @submit.prevent="submit()" class="mt-3">
                                 <div class="mb-3">
@@ -41,20 +42,19 @@
 <script>
 import NavBar from '../components/NavBar.vue'
 import Footer from '../components/Footer.vue'
-import { useForm } from '@inertiajs/vue3';
-export default {
-    components: { NavBar, Footer },
-    setup(){
+import { Head, useForm } from '@inertiajs/vue3';
+export default{
+    components: { NavBar, Footer, Head },
+    props: {
+        Infaq: Object
+    },
+    setup(props){
         const form = useForm({
-            nama: '',
-            nomor_hp: '',
-            rekening: '',
-            jumlah: ''
+            nama: props.Infaq.nama,
+            nomor_hp: props.Infaq.nomor_hp,
+            rekening: props.Infaq.rekening,
+            jumlah: props.Infaq.jumlah
         })
-
-        function submit(){
-            form.post('/infaq')
-        }
 
         function numOnly(evt){
             evt = (evt) ? evt : window.event;
@@ -66,11 +66,16 @@ export default {
             }
         }
 
+        function submit(){
+            form.put(`/infaq/${props.Infaq.id}`)
+        }
+
         return {
             form,
-            submit,
-            numOnly
+            numOnly,
+            submit
         }
     }
+
 }
 </script>
